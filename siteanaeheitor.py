@@ -64,7 +64,7 @@ st.markdown("---")
 st.subheader("💌 Deixe um recado para os noivos")
 
 # Substitua pelo e-mail que vai receber os recados
-email_destino = "kelin.rrizzi@gmail.com@gmail.com"
+email_destino = "kelin.rrizzi@gmail.com"
 
 with st.container():
     nome = st.text_input("Seu nome:", key="nome_recado")
