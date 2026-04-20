@@ -75,27 +75,32 @@ with col_p2:
 st.write("---")
 st.subheader("💌 RSVP & Recado para os Noivos")
 
-# Defina o e-mail de destino (tente o seu principal primeiro)
+# Defina o e-mail de destino
 email_destino = "kelin.rrizzi@gmail.com"
 
-nome_user = st.text_input("Seu nome:", key="nome_final")
-presenca = st.radio("Você irá ao evento?", ("Sim, com certeza!", "Infelizmente não poderei ir"))
-mensagem_user = st.text_area("Deixe seu recado:", key="msg_final")
-
-if st.button("Enviar para os Noivos"):
-    if nome_user and mensagem_user:
-        # Criamos um link que leva os dados direto para o FormSubmit
-        # Isso abre uma nova aba para confirmar o envio
-        import urllib.parse
-        msg_formatada = f"Presença: {presenca} | Recado: {mensagem_user}"
-        link_final = f"https://formsubmit.co/{email_destino}?name={urllib.parse.quote(nome_user)}&message={urllib.parse.quote(msg_formatada)}"
+# Criamos o formulário em HTML para garantir o método POST que o servidor exige
+form_html = f"""
+    <form action="https://formsubmit.co/{email_destino}" method="POST" style="background-color: #F7F3F0; padding: 20px; border-radius: 10px;">
+        <label style="color: #5D473A; font-family: sans-serif;">Seu Nome:</label><br>
+        <input type="text" name="name" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 8px;"><br><br>
         
-        st.markdown(f"""
-            <a href="{link_final}" target="_blank" style="text-decoration: none;">
-                <div style="background-color: #A6634B; color: white; padding: 10px; text-align: center; border-radius: 5px;">
-                    CLIQUE AQUI PARA CONFIRMAR O ENVIO (Último Passo)
-                </div>
-            </a>
-        """, unsafe_allow_html=True)
-    else:
-        st.error("Por favor, preencha nome e mensagem.")
+        <label style="color: #5D473A; font-family: sans-serif;">Você irá ao evento?</label><br>
+        <select name="Presença" style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 8px;">
+            <option value="Sim">Sim, com certeza!</option>
+            <option value="Não">Infelizmente não poderei ir</option>
+        </select><br><br>
+
+        <label style="color: #5D473A; font-family: sans-serif;">Sua Mensagem:</label><br>
+        <textarea name="message" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 8px; height: 100px;"></textarea><br><br>
+        
+        <input type="hidden" name="_subject" value="Novo Recado do Site de Casamento!">
+        <input type="hidden" name="_captcha" value="false">
+        
+        <button type="submit" style="background-color: #A6634B; color: white; border: none; padding: 10px 20px; border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold;">
+            ENVIAR MENSAGEM AGORA
+        </button>
+    </form>
+"""
+
+# Renderiza o formulário na tela
+st.markdown(form_html, unsafe_allow_html=True)
