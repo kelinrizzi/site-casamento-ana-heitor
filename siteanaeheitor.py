@@ -101,5 +101,4 @@ form_html = f"""
         </button>
   </form>
 """
-
 st.markdown(form_html, unsafe_allow_html=True)
