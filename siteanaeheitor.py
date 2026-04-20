@@ -52,7 +52,7 @@ st.write("### Localização")
 st.markdown("Grajagan Resort - Ilha do Mel / PR")
 st.map(latitude=-25.5562, longitude=-48.3375)
 
-# --- LISTA DE PRESENTES (NOVO) ---
+# --- LISTA DE PRESENTES ---
 st.write("---")
 st.write("### 🎁 Sugestões de Presentes")
 st.write("Sua presença é o maior presente, mas se desejar nos mimar, aqui estão algumas sugestões:")
@@ -71,36 +71,37 @@ with col_p2:
     if st.button("Presentear Jantar"):
         st.write("Chave PIX: **kelin.rrizzi@gmail.com**")
 
-# --- RSVP E RECADO (INTEGRADOS PARA E-MAIL) ---
+# --- RSVP E RECADO ---
 st.write("---")
 st.subheader("💌 RSVP & Recado para os Noivos")
 
-# Defina o e-mail de destino
 email_destino = "kelin.rrizzi@gmail.com"
 
-# Criamos o formulário em HTML para garantir o método POST que o servidor exige
+# Criamos o formulário em HTML
 form_html = f"""
-    <form action="https://formsubmit.co/{email_destino}" method="POST" style="background-color: #F7F3F0; padding: 20px; border-radius: 10px;">
-        <label style="color: #5D473A; font-family: sans-serif;">Seu Nome:</label><br>
-        <input type="text" name="name" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 8px;"><br><br>
+    <form action="https://formsubmit.co/{email_destino}" method="POST" style="background-color: white; padding: 20px; border-radius: 15px; border: 1px solid #E0D6D0;">
+        <label style="color: #5D473A; font-weight: bold;">Seu Nome:</label><br>
+        <input type="text" name="name" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; margin-bottom: 15px;"><br>
         
-        <label style="color: #5D473A; font-family: sans-serif;">Você irá ao evento?</label><br>
-        <select name="Presença" style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 8px;">
+        <label style="color: #5D473A; font-weight: bold;">Você irá ao evento?</label><br>
+        <select name="Presença" style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; margin-bottom: 15px;">
             <option value="Sim">Sim, com certeza!</option>
             <option value="Não">Infelizmente não poderei ir</option>
-        </select><br><br>
+        </select><br>
 
-        <label style="color: #5D473A; font-family: sans-serif;">Sua Mensagem:</label><br>
-        <textarea name="message" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 8px; height: 100px;"></textarea><br><br>
+        <label style="color: #5D473A; font-weight: bold;">Sua Mensagem:</label><br>
+        <textarea name="message" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; height: 100px; margin-bottom: 15px;"></textarea><br>
         
-        <input type="hidden" name="_subject" value="Novo Recado do Site de Casamento!">
+        <input type="hidden" name="_subject" value="Novo Recado: Ana e Heitor">
         <input type="hidden" name="_captcha" value="false">
         
-        <button type="submit" style="background-color: #A6634B; color: white; border: none; padding: 10px 20px; border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold;">
-            ENVIAR MENSAGEM AGORA
         <button type="submit" style="background-color: #A6634B; color: white; border: none; padding: 12px; border-radius: 50px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold;">
             ENVIAR MENSAGEM AGORA
         </button>
     </form>
 """
+
 st.markdown(form_html, unsafe_allow_html=True)
+
+st.write("---")
+st.markdown("<p style='text-align: center; font-size: 0.8em;'>Desenvolvido por Regina | iRizzi Tech</p>", unsafe_allow_html=True)
