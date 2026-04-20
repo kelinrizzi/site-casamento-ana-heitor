@@ -98,7 +98,4 @@ form_html = f"""
         
         <button type="submit" style="background-color: #A6634B; color: white; border: none; padding: 10px 20px; border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold;">
             ENVIAR MENSAGEM AGORA
-        </button>
-  </form>
-"""
-st.markdown(form_html, unsafe_allow_html=True)
+        
