@@ -86,7 +86,7 @@ with st.form("form_contato", clear_on_submit=True):
 
     if submit:
         if nome_user and mensagem_user:
-            link_envio = f"https://formsubmit.co/ajax/{email_destino}"
+            link_envio = f"https://formsubmit.co/{email_destino}"
             dados = {
                 "Nome": nome_user,
                 "Presença": presenca,
