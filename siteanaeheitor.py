@@ -75,7 +75,7 @@ with col_p2:
 st.write("---")
 st.subheader("💌 RSVP & Recado para os Noivos")
 
-email_destino = "kelin.rrizzi@gmail.com"
+email_destino = "kelinrizzii@gmail.com"
 
 with st.form("form_contato", clear_on_submit=True):
     nome_user = st.text_input("Seu nome:")
