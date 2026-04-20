@@ -59,3 +59,17 @@ if st.button("Confirmar Presença"):
 
 st.write("---")
 st.markdown("<p style='font-size: 0.8em;'>Desenvolvido por Regina | iRizzi Tech</p>", unsafe_allow_html=True)
+
+st.markdown("---")
+st.subheader("💌 Deixe um recado para os noivos")
+
+with st.form("meu_recado", clear_on_submit=True):
+    nome_convidado = st.text_input("Seu nome:")
+    mensagem = st.text_area("Sua mensagem carinhosa:")
+    botao_enviar = st.form_submit_button("Enviar Mensagem")
+
+    if botao_enviar:
+        if nome_convidado and mensagem:
+            st.success(f"Obrigado, {nome_convidado}! Seu recado foi enviado com sucesso. ❤️")
+        else:
+            st.error("Por favor, preencha o nome e a mensagem antes de enviar.")
