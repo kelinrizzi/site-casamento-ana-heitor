@@ -75,31 +75,27 @@ with col_p2:
 st.write("---")
 st.subheader("💌 RSVP & Recado para os Noivos")
 
-email_destino = "kelinrizzii@gmail.com"
+# Defina o e-mail de destino (tente o seu principal primeiro)
+email_destino = "kelin.rrizzi@gmail.com"
 
-with st.form("form_contato", clear_on_submit=True):
-    nome_user = st.text_input("Seu nome:")
-    presenca = st.radio("Você irá ao evento?", ("Sim, com certeza!", "Infelizmente não poderei ir"))
-    mensagem_user = st.text_area("Deixe seu recado:")
-    
-    submit = st.form_submit_button("Enviar para os Noivos")
+nome_user = st.text_input("Seu nome:", key="nome_final")
+presenca = st.radio("Você irá ao evento?", ("Sim, com certeza!", "Infelizmente não poderei ir"))
+mensagem_user = st.text_area("Deixe seu recado:", key="msg_final")
 
-    if submit:
-        if nome_user and mensagem_user:
-            link_envio = f"https://formsubmit.co/{email_destino}"
-            dados = {
-                "Nome": nome_user,
-                "Presença": presenca,
-                "Mensagem": mensagem_user,
-                "_subject": f"Novo RSVP/Recado de {nome_user}"
-            }
-            try:
-                requests.post(link_envio, data=dados)
-                st.success(f"Feito, {nome_user}! Sua mensagem foi enviada. ❤️")
-            except:
-                st.error("Erro ao enviar. Verifique sua conexão.")
-        else:
-            st.error("Por favor, preencha nome e mensagem.")
-
-st.write("---")
-st.markdown("<p style='font-size: 0.8em;'>Desenvolvido por Regina | iRizzi Tech</p>", unsafe_allow_html=True)
+if st.button("Enviar para os Noivos"):
+    if nome_user and mensagem_user:
+        # Criamos um link que leva os dados direto para o FormSubmit
+        # Isso abre uma nova aba para confirmar o envio
+        import urllib.parse
+        msg_formatada = f"Presença: {presenca} | Recado: {mensagem_user}"
+        link_final = f"https://formsubmit.co/{email_destino}?name={urllib.parse.quote(nome_user)}&message={urllib.parse.quote(msg_formatada)}"
+        
+        st.markdown(f"""
+            <a href="{link_final}" target="_blank" style="text-decoration: none;">
+                <div style="background-color: #A6634B; color: white; padding: 10px; text-align: center; border-radius: 5px;">
+                    CLIQUE AQUI PARA CONFIRMAR O ENVIO (Último Passo)
+                </div>
+            </a>
+        """, unsafe_allow_html=True)
+    else:
+        st.error("Por favor, preencha nome e mensagem.")
