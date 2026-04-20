@@ -63,13 +63,22 @@ st.markdown("<p style='font-size: 0.8em;'>Desenvolvido por Regina | iRizzi Tech<
 st.markdown("---")
 st.subheader("💌 Deixe um recado para os noivos")
 
-with st.form("meu_recado", clear_on_submit=True):
-    nome_convidado = st.text_input("Seu nome:")
-    mensagem = st.text_area("Sua mensagem carinhosa:")
-    botao_enviar = st.form_submit_button("Enviar Mensagem")
+# Substitua pelo e-mail que vai receber os recados
+email_destino = "kelin.rrizzi@gmail.com@gmail.com"
 
-    if botao_enviar:
-        if nome_convidado and mensagem:
-            st.success(f"Obrigado, {nome_convidado}! Seu recado foi enviado com sucesso. ❤️")
+with st.container():
+    nome = st.text_input("Seu nome:", key="nome_recado")
+    msg = st.text_area("Sua mensagem carinhosa:", key="area_recado")
+    
+    # Criando o link de envio automático via FormSubmit
+    corpo_email = f"Nome: {nome} \nMensagem: {msg}"
+    link_envio = f"https://formsubmit.co/ajax/{email_destino}"
+
+    if st.button("Enviar Mensagem"):
+        if nome and msg:
+            import requests
+            # Envia os dados para o e-mail de forma invisível
+            requests.post(link_envio, data={"Nome": nome, "Mensagem": msg})
+            st.success(f"Obrigado, {nome}! Os noivos receberão seu carinho por e-mail. ❤️")
         else:
-            st.error("Por favor, preencha o nome e a mensagem antes de enviar.")
+            st.error("Por favor, preencha todos os campos.")
