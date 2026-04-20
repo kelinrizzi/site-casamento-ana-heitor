@@ -77,31 +77,26 @@ st.subheader("💌 RSVP & Recado para os Noivos")
 
 email_destino = "kelin.rrizzi@gmail.com"
 
-# Criamos o formulário em HTML
+# Este bloco abaixo PRECISA ficar totalmente encostado na margem esquerda
 form_html = f"""
-    <form action="https://formsubmit.co/{email_destino}" method="POST" style="background-color: white; padding: 20px; border-radius: 15px; border: 1px solid #E0D6D0;">
-        <label style="color: #5D473A; font-weight: bold;">Seu Nome:</label><br>
-        <input type="text" name="name" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; margin-bottom: 15px;"><br>
-        
-        <label style="color: #5D473A; font-weight: bold;">Você irá ao evento?</label><br>
-        <select name="Presença" style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; margin-bottom: 15px;">
-            <option value="Sim">Sim, com certeza!</option>
-            <option value="Não">Infelizmente não poderei ir</option>
-        </select><br>
-
-        <label style="color: #5D473A; font-weight: bold;">Sua Mensagem:</label><br>
-        <textarea name="message" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; height: 100px; margin-bottom: 15px;"></textarea><br>
-        
-        <input type="hidden" name="_subject" value="Novo Recado: Ana e Heitor">
-        <input type="hidden" name="_captcha" value="false">
-        
-        <button type="submit" style="background-color: #A6634B; color: white; border: none; padding: 12px; border-radius: 50px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold;">
-            ENVIAR MENSAGEM AGORA
-        </button>
-    </form>
+<form action="https://formsubmit.co/{email_destino}" method="POST" style="background-color: white; padding: 20px; border-radius: 15px; border: 1px solid #E0D6D0;">
+<label style="color: #5D473A; font-weight: bold;">Seu Nome:</label><br>
+<input type="text" name="name" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; margin-bottom: 15px;"><br>
+<label style="color: #5D473A; font-weight: bold;">Você irá ao evento?</label><br>
+<select name="Presença" style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; margin-bottom: 15px;">
+<option value="Sim">Sim, com certeza!</option>
+<option value="Não">Infelizmente não poderei ir</option>
+</select><br>
+<label style="color: #5D473A; font-weight: bold;">Sua Mensagem:</label><br>
+<textarea name="message" required style="width: 100%; border-radius: 5px; border: 1px solid #A6634B; padding: 10px; height: 100px; margin-bottom: 15px;"></textarea><br>
+<input type="hidden" name="_subject" value="Novo Recado: Ana e Heitor">
+<input type="hidden" name="_captcha" value="false">
+<button type="submit" style="background-color: #A6634B; color: white; border: none; padding: 12px; border-radius: 50px; width: 100%; cursor: pointer; font-size: 16px; font-weight: bold;">
+ENVIAR MENSAGEM AGORA
+</button>
+</form>
 """
 
 st.markdown(form_html, unsafe_allow_html=True)
-
 st.write("---")
 st.markdown("<p style='text-align: center; font-size: 0.8em;'>Desenvolvido por Regina | iRizzi Tech</p>", unsafe_allow_html=True)
