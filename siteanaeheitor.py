@@ -64,7 +64,7 @@ with col_p2:
 st.write("---")
 st.subheader("💌 RSVP & Recado para os Noivos")
 
-email_destino = "kelin.rrizzi@gmail.com"
+email_destino = "heitor.engmec@outlook.com"
 
 # Criando o formulário HTML sem recuos para evitar bugs de exibição
 form_html = f"""
